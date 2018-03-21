@@ -1,16 +1,20 @@
-global MatrixSize
-global matrix
+#######################
+#Author:Alek Zeng
+#Date: 03/20/2018
+########################
+global MatrixSize  #Sets the size of the matrix
+global matrix #Initial matrix array
 matrix=[]
 MatrixSize = 50
 
-def CreateMatrix(): 
+def CreateMatrix(): #defines function that creates the matrix
     
     for x in range(MatrixSize):    
         matrix.append([])
         for n in range(MatrixSize):
             matrix[x].append(1)
 
-def DrawMatrix():    
+def DrawMatrix():  # Defines function that prints out the final matrix,AKA the driver
     for n in range(MatrixSize):    
         for x in matrix[n]:
             if x==0:
@@ -21,13 +25,10 @@ def DrawMatrix():
         print()
         
         
-def SetValueMatrix(x,y,value):
+def SetValueMatrix(x,y,value): #function used to change things in the matrix
     matrix[y][x] = value
-    #Truexy=(y*MatrixSize)-(MatrixSize-x)
-    #matrix.insert((Truexy),value)
 
-
-def DrawDiamond(x,y,n,z):    
+def DrawDiamond(x,y,n,z):  #creates diamond in the matrix  
     global removeSP
     removeSP=1
     SP=1
@@ -52,12 +53,12 @@ def DrawDiamond(x,y,n,z):
         removeSP=removeSP-SP
         SP=SP+1
       
-def DiamondOutline(x,y,n,t):
+def DiamondOutline(x,y,n,t): #creates an outlined diamond in the matrix
 
     DrawDiamond(x,y,n,0)        
     DrawDiamond(x+t,y+t,n-t,1)
 
-CreateMatrix()
-DiamondOutline(7,5,8,1)
-DiamondOutline(10,5,8,1)
-DrawMatrix()
+CreateMatrix() # Form intial matrix
+DiamondOutline(7,5,8,1) #adds outlined diamond to matrix
+DiamondOutline(10,5,8,1) #adds outlined diamond to matrix
+DrawMatrix() # prints out the final matrix
